@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="emprestimo.css">
+    <title>Empréstimo de Livro</title>
+</head>
+<body>
+    <div class="alinhar">
+        <div class="barra-lateral">
+            <img src="../img/senai_logo.png" id="img">
+            <div class="opcao" id="biblioteca">
+                <div class="seta"></div>
+                <p>Biblioteca</p>
+            </div>
+            <div class="opcao" id="add">
+                <div class="add"></div>
+                <p>Adicionar Livro</p>
+            </div>
+            <div class="opcao" id="emprestimo">
+                <p>Fazer Empréstimo</p>
+            </div>
+            <div class="opcao" id="frequencia">
+                <p>Lista de Frequência</p>
+            </div>
+            <div class="opcao" id="sair">
+                <p>Sair</p>
+            </div>
+        </div>
+        
+        <div class="area">
+            <div class="conta">
+                <div class="txt">
+                    <p>Usuário</p>
+                    <p id="menu">Menu da conta</p>
+                </div>
+                <div class="img-conta"></div>
+            </div>
+            <p id="title"><strong>Empréstimo de Livros</strong></p>
+            <div class="container">
+                <p id="titleinfo"><strong>Informações do Leitor:</strong></p>
+                <div class="container2">
+                    <div class="label">
+                        <label for="nome">Nome:</label>
+                        <input type="text" placeholder="Nome Completo" id="nome" name="nome">
+                    </div>
+                    <div class="label">
+                        <label for="Indentifi">Número de Indentificação:</label>
+                        <input type="number" placeholder="Número de Indentificação" id="Indentifi">
+                    </div>
+                </div>
+                <div class="label">
+                    <label for="livro">Nome do Livro:</label>
+                    <input type="text" placeholder="Nome do Livro" id="livro">
+                </div>
+                <div class="container2">
+                    <div class="label">
+                        <label for="dataEmprestimo">Data do Empréstimo:</label>
+                        <input type="date" placeholder="2024/02/10" id="dataEmprestimo">
+                    </div>
+                    <div class="label">
+                        <label for="dataDevolucao"> Data de Devolução:</label>
+                        <input type="date" placeholder="2024/02/10" id="dataDevolucao">
+                    </div>
+                </div>
+                <button id="efetuar">Efetuar Empréstimo</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
