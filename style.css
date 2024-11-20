@@ -1,0 +1,129 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body #fundo{
+    display: flex;
+    justify-content: center;
+}
+.fundo{
+    background-image: url(img/fundo.png);
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 1910px;
+    width: 1910px;
+    height: 950px;
+    background-color: aqua;
+    z-index: -100;
+}
+
+header{
+    height: 100px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.24);
+}
+
+header img{
+    width: 250px;
+    height: 70px;
+}
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    max-width: 1920px;
+    margin: 0 auto;
+    height: 100px;
+}
+
+#email, #senha {
+    padding-left: 20px;
+    width: 350px;
+    height: 50px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid rgba(202, 202, 202, 0.158);
+}
+
+.alinhar{
+    display: flex;
+    width: 340px;
+}
+
+label{    
+    padding-left: 15px;
+}
+
+
+#iniciar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 183px;
+    height: 41px;
+    background-color: rgb(204, 64, 57);
+    border-radius: 200px;
+}
+
+#cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    transition: 300ms;
+    width: 183px;
+    height: 41px;
+    background-color: rgb(204, 64, 57);
+    border-radius: 200px;
+}
+
+#lembrarsenha{
+    cursor: pointer;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 200px;
+    border-radius: 14px;
+    width: 400px;
+    height: 433px;
+    background-color: rgba(230, 230, 230, 0.3);
+    border: 1px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.24);
+}
+
+.login p{
+    font-size:xx-large;
+}
+
+#enviar {
+    width: 350px;
+    height: 50px;
+    border-radius: 4px;
+    transition: 300ms;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-size: x-large;
+    color: white;
+    background-color:  rgba(204, 64, 57, 1);
+}
+
+#enviar:hover {
+    scale: 1.05;
+}
+
+#cadastro:hover{
+    scale: 1.05;
+}
