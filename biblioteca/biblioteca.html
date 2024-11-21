@@ -63,36 +63,59 @@
             </div>
 
             <div class="container3">
-                <p>A</p>
-                <p>B</p>
-                <p>C</p>
-                <p>D</p>
-                <p>E</p>
-                <p>F</p>
-                <p>G</p>
-                <p>H</p>
-                <p>I</p>
-                <p>J</p>
-                <p>K</p>
-                <p>L</p>
-                <p>M</p>
-                <p>N</p>
-                <p>O</p>
-                <p>P</p>
-                <p>Q</p>
-                <p>R</p>
-                <p>S</p>
-                <p>T</p>
-                <p>U</p>
-                <p>V</p>
-                <p>W</p>
-                <p>X</p>
-                <p>Y</p>
-                <p>Z</p>
+                <button data-letra="A">A</button>
+                <button data-letra="B">B</button>
+                <button data-letra="C">C</button>
+                <button data-letra="D">D</button>
+                <button data-letra="E">E</button>
+                <button data-letra="F">F</button>
+                <button data-letra="G">G</button>
+                <button data-letra="H">I</button>
+                <button data-letra="J">J</button>
+                <button data-letra="K">K</button>
+                <button data-letra="L">L</button>
+                <button data-letra="L">L</button>
+                <button data-letra="L">L</button>
+                <button data-letra="M">M</button>
+                <button data-letra="N">N</button>
+                <button data-letra="O">O</button>
+                <button data-letra="P">P</button>
+                <button data-letra="Q">Q</button>
+                <button data-letra="R">R</button>
+                <button data-letra="S">S</button>
+                <button data-letra="T">T</button>
+                <button data-letra="U">U</button>
+                <button data-letra="V">V</button>
+                <button data-letra="W">W</button>
+                <button data-letra="X">X</button>
+                <button data-letra="Y">Y</button>
+                <button data-letra="Z">Z</button>
             </div>
-
-
         </div>
     </div>
+
+    
+    <script>
+        const baseUrl = 'http://localhost:3000/api/titulos';
+
+        document.getElementById('alfabeto').addEventListener('click', (e) => {
+            if (e.target.tagName === 'BUTTON') {
+                const letra = e.target.getAttribute('data-letra');
+                fetch(`${baseUrl}?letra=${letra}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const lista = document.getElementById('resultados');
+                        lista.innerHTML = '';
+                        data.forEach(item => {
+                            const li = document.createElement('li');
+                            li.textContent = item.titulo;
+                            lista.appendChild(li);
+                        });
+                    })
+                    .catch(error => console.error('Erro ao buscar dados:', error));
+            }
+        });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
