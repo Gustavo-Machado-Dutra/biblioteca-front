@@ -8,25 +8,26 @@
 </head>
 <body>
     <div class="alinhar">
+
         <div class="barra-lateral">
             <img src="../img/senai_logo.png" id="img">
-            <div class="opcao" id="biblioteca">
+            <a href=""><div class="opcao" id="biblioteca">
                 <div class="seta"></div>
                 <p>Biblioteca</p>
-            </div>
-            <div class="opcao" id="add">
+            </div></a>
+            <a href="../add_llivro/add_livro.html"><div class="opcao" id="add">
                 <div class="add"></div>
                 <p>Adicionar Livro</p>
-            </div>
-            <div class="opcao" id="emprestimo">
+            </div></a>
+            <a href="../emprestimo/emprestimo.html"><div class="opcao" id="emprestimo">
                 <p>Fazer Empréstimo</p>
-            </div>
-            <div class="opcao" id="frequencia">
+            </div></a>
+            <a href=""><div class="opcao" id="frequencia">
                 <p>Lista de Frequência</p>
-            </div>
-            <div class="opcao" id="sair">
+            </div></a>
+            <a href="../index.html"><div class="opcao" id="sair">
                 <p>Sair</p>
-            </div>
+            </div></a>
         </div>
 
         
@@ -70,11 +71,10 @@
                 <button data-letra="E">E</button>
                 <button data-letra="F">F</button>
                 <button data-letra="G">G</button>
-                <button data-letra="H">I</button>
+                <button data-letra="H">H</button>
+                <button data-letra="I">I</button>
                 <button data-letra="J">J</button>
                 <button data-letra="K">K</button>
-                <button data-letra="L">L</button>
-                <button data-letra="L">L</button>
                 <button data-letra="L">L</button>
                 <button data-letra="M">M</button>
                 <button data-letra="N">N</button>
@@ -94,11 +94,12 @@
         </div>
     </div>
 
+    <ul id="resultados"></ul>
     
     <script>
         const baseUrl = 'http://localhost:3000/api/titulos';
 
-        document.getElementById('alfabeto').addEventListener('click', (e) => {
+        document.getElementById('container3').addEventListener('click', (e) => {
             if (e.target.tagName === 'BUTTON') {
                 const letra = e.target.getAttribute('data-letra');
                 fetch(`${baseUrl}?letra=${letra}`)

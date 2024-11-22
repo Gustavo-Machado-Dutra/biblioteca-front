@@ -37,7 +37,7 @@
 .barra-lateral img{
     margin-top: 50px;
     margin-bottom: 40px;
-    width: 17\0px;
+    width: 170px;
     height: 50px;
 }
 
@@ -48,6 +48,11 @@
     width: 235px;
     height: 950px;
     background-color: rgba(246, 246, 246, 1);
+}
+
+.barra-lateral a{
+    text-decoration: none;
+    color: black;
 }
 
 #emprestimo{
