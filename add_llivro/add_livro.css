@@ -7,18 +7,9 @@
     font-style: normal;
 }
 
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-}
-
 #title{
     font-weight: 700;
     position: relative;
-    
     font-size: 65px;
 }
 
@@ -35,7 +26,6 @@ body{
     border-bottom: 1px solid rgba(222, 222, 222, 1);
 }
 
-
 .alinhar{
     display: flex;
     max-width: 1910px;
@@ -45,15 +35,15 @@ body{
 .area{
     display: flex;
     justify-content: center;
-    width: 1650px;
+    width: 1685px;
     height: 950px;
     margin-top: -50px;
 }
 
-#img{
+.barra-lateral img{
     margin-top: 50px;
     margin-bottom: 40px;
-    width: 0px;
+    width: 170px;
     height: 50px;
 }
 
@@ -62,7 +52,7 @@ body{
     align-items: center;
     flex-direction: column;
     width: 235px;
-    height: 950px;
+    height: 1340px;
     background-color: rgba(246, 246, 246, 1);
 }
 
@@ -82,7 +72,6 @@ body{
     background-image: url(../img/seta.png);
     background-repeat: no-repeat;
     background-size: cover;
-    
     width: 14px;
     height: 11px;
 }
@@ -127,7 +116,6 @@ input{
     align-items: center;
     flex-direction: column;
     justify-content: space-around;
-    width: 1590px;
     height: 1340px;
 }
 
@@ -164,7 +152,7 @@ input{
     background-color: rgba(204, 64, 57, 1);
 }
 
-#efetuar:hover{
+#enviar:hover{
     scale: 1.05;
 }
 
@@ -178,31 +166,12 @@ input{
     font-size: 35px;
 }
 
-#img{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 200px;
-    height: 50px;
-    font-size: 18px;
-    border: none;
-    border-radius: 5px;
-    background-color: rgba(75, 193, 210, 0.31);
-}
-
-#img img{
-    width: 18px;
-    height: 18px;
-}
-
 .botoes{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 970px;
 }
-
 
 .conta{
     display: flex;

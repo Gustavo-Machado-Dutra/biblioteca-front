@@ -19,13 +19,12 @@
     flex-direction: column;
     width: 1685px;
     height: 950px;
-    margin-right: 100px;
 }
 
 .barra-lateral img{
     margin-top: 50px;
     margin-bottom: 40px;
-    width: 17\0px;
+    width: 170px;
     height: 50px;
 }
 
@@ -54,7 +53,6 @@
     background-image: url(../img/seta.png);
     background-repeat: no-repeat;
     background-size: cover;
-    
     width: 14px;
     height: 11px;
 }
@@ -70,11 +68,11 @@
 .opcao{
     display: flex;
     align-items: center;
-    cursor: pointer;
     padding-left: 36px;
     gap: 10px;
     height: 40px;
     width: 235px;
+    cursor: pointer;
 }
 
 .opcao:hover {
@@ -182,7 +180,7 @@ input{
     font-weight: 400;
 }
 
-.container3 p:hover{
+.container3 button:hover{
     scale: 1.5;
 }
 
