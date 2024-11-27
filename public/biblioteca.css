@@ -167,10 +167,13 @@ input{
 }
 
 .container3{
+    width: 1555px;
     display: flex;
+    justify-content: center;
     gap: 25px;
     margin-top: 50px;
-    
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ddd;
 }
 
 .container3 button{
@@ -265,6 +268,11 @@ margin-top: 3px;
 }
 
 #resultados {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 1575px;
+    height: 500px;
     list-style: none;
     padding: 0;
     margin-top: 20px;
@@ -272,13 +280,21 @@ margin-top: 3px;
 
 #resultados li {
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 15px;
     padding: 10px;
-    border-bottom: 1px solid #ddd;
 }
 
 #resultados img {
+    width: 130px;
+    height: 180px;
     border-radius: 5px;
     object-fit: cover;
+}
+
+
+.column{
+    display: flex;
+    flex-direction: column;
 }

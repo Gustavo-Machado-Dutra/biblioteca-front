@@ -90,10 +90,14 @@
                 <button data-letra="Y">Y</button>
                 <button data-letra="Z">Z</button>
             </div>
+
+            <div class="column">
+                <ul id="resultados"></ul>
+            </div>
         </div>
     </div>
 
-    <ul id="resultados"></ul>
+    
     
     <script>
     const baseUrl = 'http://localhost:3000/api/livros';
@@ -118,15 +122,15 @@
                             // Adiciona cada livro à lista de resultados
                             data.forEach(item => {
                                 const li = document.createElement('li');
-                                li.style.display = 'flex';
-                                li.style.alignItems = 'center';
-                                li.style.marginBottom = '10px';
+                                // li.style.display = 'flex';
+                                // li.style.alignItems = 'center';
+                                // li.style.marginBottom = '10px';
 
                                 const img = document.createElement('img');
                                 img.src = item.imagem || 'default-image.jpg'; // Usa uma imagem padrão se o URL não for fornecido
                                 img.alt = item.Titulo;
-                                img.style.width = '50px'; // Ajuste conforme necessário
-                                img.style.height = '50px';
+                                // img.style.width = '130px'; // Ajuste conforme necessário
+                                // img.style.height = '180px';
                                 img.style.marginRight = '10px';
 
                                 const title = document.createElement('span');
