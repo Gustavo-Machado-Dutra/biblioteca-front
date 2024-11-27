@@ -20,6 +20,7 @@ const dbConfig = {
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('public'));
+app.use('/img', express.static('public/img'));
 
 app.get('/api/livros', async (req, res) => {
     const { letra } = req.query;

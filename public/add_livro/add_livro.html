@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="emprestimo.css">
+    <link rel="stylesheet" href="add_livro.css">
     <title>Empréstimo de Livro</title>
 </head>
 <body>
@@ -87,43 +87,72 @@
                 <p>Sair</p>
             </div></a>
         </div>
-        
+
         <div class="area">
-            <div class="conta">
-                <div class="txt">
-                    <p>Usuário</p>
-                    <p id="menu">Menu da conta</p>
-                </div>
-                <div class="img-conta"></div>
-            </div>
-            <p id="title"><strong>Empréstimo de Livros</strong></p>
+            
             <div class="container">
-                <p id="titleinfo"><strong>Informações do Leitor:</strong></p>
-                <div class="container2">
-                    <div class="label">
-                        <label for="nome">Nome:</label>
-                        <input type="text" placeholder="Nome Completo" id="nome" name="nome">
+                <div class="conta">
+                    <div class="txt">
+                        <p>Usuário</p>
+                        <p id="menu">Menu da conta</p>
                     </div>
-                    <div class="label">
-                        <label for="Indentifi">Número de Indentificação:</label>
-                        <input type="number" placeholder="Número de Indentificação" id="Indentifi">
-                    </div>
+                    <div class="img-conta"></div>
+                </div>
+                <p id="title">Adicionar Livros</p>
+                <div class="line">
+                    <p id="titleinfo">Informações do Livro</p>
+                </div>
+
+                <div class="label">
+                    <label for="assunto">Selecionar Assunto:</label> <!-- MUDAR O INPUT PARA ESCOLHER O ASSUNTO -->
+                    <input type="text" placeholder="Selecione o Assunto" id="assunto">
                 </div>
                 <div class="label">
-                    <label for="livro">Nome do Livro:</label>
-                    <input type="text" placeholder="Nome do Livro" id="livro">
+                    <label for="titulo">Titulo:</label>
+                    <input type="text" placeholder="Titulo do Livro" id="titulo">
                 </div>
-                <div class="container2">
-                    <div class="label">
-                        <label for="dataEmprestimo">Data do Empréstimo:</label>
-                        <input type="date" placeholder="2024/02/10" id="dataEmprestimo">
-                    </div>
-                    <div class="label">
-                        <label for="dataDevolucao"> Data de Devolução:</label>
-                        <input type="date" placeholder="2024/02/10" id="dataDevolucao">
-                    </div>
+                <div class="label">
+                    <label for="autor">Autor:</label>
+                    <input type="text" placeholder="Nome do Autor" id="autor">
                 </div>
-                <button id="efetuar">Efetuar Empréstimo</button>
+                <div class="label">
+                    <label for="dataEmprestimo">Descriçao</label>
+                    <input type="text" placeholder="" id="desc">
+                </div>
+                <div class="label">
+                    <label for="dataDevolucao"> Editora:</label>
+                    <input type="text" placeholder="Nome da Editora" id="dataDevolucao">
+                </div>
+
+            <div class="container2">
+                <div class="label">
+                    <label for="volume">Volume:</label>
+                    <input type="text" placeholder="Num. do Volume" id="volume">
+                </div>
+
+                <div class="label">
+                    <label for="edicao">Edição:</label>
+                    <input type="text" placeholder="Num. da Edição" id="edicao">
+                </div>
+
+                <div class="label">
+                    <label for="quantidade">Quantidade Disponivel:</label>
+                    <input type="text" placeholder="Qtd" id="quantidade">
+                </div>
+            </div>
+            <p id="data">Data de Publicação</p>
+            <div class="label">
+                <label for="ano"> Ano</label>
+                <input type="number" placeholder="AAAA" id="ano"> 
+            </div>
+
+            <div class="label">
+                <label for="codigo"> Código do Livro</label>
+                <input type="text" placeholder="" id="codigo">
+            </div>
+            <div class="botoes">
+                <button id="enviar">Enviar</button>
+                <button id="img"><img src="../img/img.png">Imagem da Capa</button>
             </div>
         </div>
     </div>

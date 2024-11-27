@@ -68,22 +68,6 @@
     background-color: rgb(255, 255, 255);
 }
 
-.seta{
-    background-image: url(../img/seta.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 14px;
-    height: 11px;
-}
-
-.add{
-    background-image: url(../img/add.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 20px;
-    height:20px;
-}
-
 .opcao{
     display: flex;
     align-items: center;
@@ -179,21 +163,20 @@ input{
     flex-direction: row;
     justify-content: space-around;
     position: relative;
-    left: 700px;
-    top: 80px;
+    left: 690px;
+    top: 88px;
     width: 185px;
     height: 60px;
     padding-left: 15px;
     background-color: rgba(238, 238, 239, 1);
     border-radius: 100px;
-    
 }
 
 .txt{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 #menu{

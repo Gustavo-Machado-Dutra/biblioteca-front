@@ -1,150 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="biblioteca.css">
-    <title>Empréstimo de Livro</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Login</title>
 </head>
 <body>
-    <div class="alinhar">
-        <div class="barra-lateral">
-            <img src="../img/senai_logo.png" id="img">
-            <div class="opcao" id="biblioteca">
-                <div class="seta"></div>
-                <p>Biblioteca</p>
-            </div>
-            <div class="opcao" id="add">
-                <div class="add"></div>
-                <p>Adicionar Livro</p>
-            </div>
-            <div class="opcao" id="emprestimo">
-                <p>Fazer Empréstimo</p>
-            </div>
-            <div class="opcao" id="frequencia">
-                <p>Lista de Frequência</p>
-            </div>
-            <div class="opcao" id="sair">
-                <p>Sair</p>
-            </div>
-        </div>
 
-        
-        <div class="area">
-            <div class="conta">
-                <img src="../img/lupa.png" id="lupa">
-                <input type="search" placeholder="Digite o nome do seu livro" id="nomeLivro">
-                <div class="menu">
-                    <div class="txt">
-                        <p>Usuário</p>
-                        <p id="menu">Menu da conta</p>
-                    </div>
-                    <div class="img-conta"></div>
-                </div>
+    <div class="fundo">
+        <header>
+            <div class="navbar">
+                <img src="img/senai_logo.png">
+                <p id="cadastro">Cadastrar-se</p>
             </div>
+        </header>
 
-            <div class="container2">
-                <div class="div">
-                    <p>Buscar por Assunto:</p>
-                </div>
-                <form class="form">
-                    <button>
-                        <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
-                            <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </svg>
-                    </button>
-                    <input class="input" placeholder="Procurar por Assunto" required="" type="text" id="assunto">
-                    <button class="reset" type="reset">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </form>
-            </div>
 
-            <div class="container3" id="container3">
-                <button data-letra="A">A</button>
-                <button data-letra="B">B</button>
-                <button data-letra="C">C</button>
-                <button data-letra="D">D</button>
-                <button data-letra="E">E</button>
-                <button data-letra="F">F</button>
-                <button data-letra="G">G</button>
-                <button data-letra="H">H</button>
-                <button data-letra="I">I</button>
-                <button data-letra="J">J</button>
-                <button data-letra="K">K</button>
-                <button data-letra="L">L</button>
-                <button data-letra="M">M</button>
-                <button data-letra="N">N</button>
-                <button data-letra="O">O</button>
-                <button data-letra="P">P</button>
-                <button data-letra="Q">Q</button>
-                <button data-letra="R">R</button>
-                <button data-letra="S">S</button>
-                <button data-letra="T">T</button>
-                <button data-letra="U">U</button>
-                <button data-letra="V">V</button>
-                <button data-letra="W">W</button>
-                <button data-letra="X">X</button>
-                <button data-letra="Y">Y</button>
-                <button data-letra="Z">Z</button>
+        <div class="login">
+            <p>Iniciar Sessão</p>
+            <input type="text" name="email" id="email" placeholder="E-mail">
+            <input type="password" name="senha" id="senha" placeholder="Senha">
+            <div class="alinhar">
+                <input type="checkbox" name="Lembrar senha" id="lembrarsenha">
+                <label for="lembrarsenha"> Lembrar-me</label>
             </div>
-
-            <div class="column">
-                <ul id="resultados"></ul>
-            </div>
+            <a href="biblioteca/biblioteca.html"><input type="submit" value="Iniciar Sessão" id="enviar"></a>
         </div>
     </div>
-
-    
-    
-    <script>
-    const baseUrl = 'http://localhost:3000/api/livros';
-
-        document.getElementById('container3').addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                const letra = e.target.getAttribute('data-letra'); // Pega a letra do botão clicado
-
-                // Faz a requisição para o servidor
-                fetch(`${baseUrl}?letra=${letra}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const lista = document.getElementById('resultados');
-                        lista.innerHTML = ''; // Limpa os resultados anteriores
-
-                        if (data.length === 0) {
-                            // Exibe uma mensagem caso não encontre livros
-                            const noResults = document.createElement('li');
-                            noResults.textContent = 'Nenhum livro encontrado.';
-                            lista.appendChild(noResults);
-                        } else {
-                            // Adiciona cada livro à lista de resultados
-                            data.forEach(item => {
-                                const li = document.createElement('li');
-                                // li.style.display = 'flex';
-                                // li.style.alignItems = 'center';
-                                // li.style.marginBottom = '10px';
-
-                                const img = document.createElement('img');
-                                img.src = item.imagem || 'default-image.jpg'; // Usa uma imagem padrão se o URL não for fornecido
-                                img.alt = item.Titulo;
-                                // img.style.width = '130px'; // Ajuste conforme necessário
-                                // img.style.height = '180px';
-                                img.style.marginRight = '10px';
-
-                                const title = document.createElement('span');
-                                title.textContent = item.Titulo;
-
-                                li.appendChild(img); // Adiciona a imagem ao elemento
-                                li.appendChild(title); // Adiciona o título ao elemento
-                                lista.appendChild(li); // Adiciona o item à lista
-                            });
-                        }
-                    })
-                    .catch(error => console.error('Erro ao buscar dados:', error));
-            }
-        });
-    </script>
 </body>
 </html>
