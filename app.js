@@ -16,37 +16,42 @@ const dbConfig = {
                                     // autoassinado (resolve problemas de conexão SSL).
     }
 };
+app.use(cors()); // Ativa o CORS para permitir requisições de diferentes origens.
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(express.static('public'));
-app.use('/img', express.static('public/img'));
+app.use(bodyParser.json()); // Processa o corpo de requisições HTTP no formato JSON.
 
-app.get('/api/livros', async (req, res) => {
-    const { letra } = req.query;
+app.use(express.static('public')); // Serve arquivos estáticos da pasta 'public'.
 
-    // Verifica se a letra foi fornecida corretamente
-    if (!letra || letra.length !== 1) {
-        return res.status(400).json({ error: 'Informe uma única letra para o filtro.' });
-    }
+app.use('/img', express.static('public/img')); // Serve arquivos da pasta 'public/img' na rota '/img'.
+
+app.get('/api/livros', async (req, res) => { // Define uma rota GET para o endpoint '/api/livros'.
+    const { letra } = req.query; // Captura o parâmetro 'letra' da query string, se fornecido.
 
     try {
-        const pool = await sql.connect(dbConfig);
-        const result = await pool
-            .request()
-            .input('letra', sql.NVarChar, `${letra}%`) // Passa a letra com '%' para buscar títulos que começam com a letra
-            .query('SELECT Titulo, imagem FROM Livros WHERE Titulo LIKE @letra');
+        const pool = await sql.connect(dbConfig); // Conecta ao banco de dados usando as configurações fornecidas.
 
-        if (result.recordset.length === 0) {
-            return res.status(200).json([]); // Retorna uma lista vazia se não houver resultados
+        const query = letra // Define a consulta SQL com ou sem filtro pela letra.
+            ? 'SELECT Titulo, imagem FROM Livros WHERE Titulo LIKE @letra' // Consulta com filtro de títulos que começam com a letra.
+            : 'SELECT Titulo, imagem FROM Livros'; // Consulta sem filtro para retornar todos os livros.
+            
+            // ? = se o valor de letra for verdadeiro consulta com filtro
+            // : = se o valor de letra for vazio, ou falso,  consulta todos os livros
+
+        const request = pool.request(); // Cria um objeto para configurar e executar a consulta ao banco.
+
+        if (letra) { // Se a letra foi fornecida, adiciona o parâmetro à consulta.
+            request.input('letra', sql.NVarChar, `${letra}%`); // Configura o parâmetro 'letra' com a formatação adequada.
         }
 
-        res.json(result.recordset); // Envia os livros encontrados como resposta
-    } catch (error) {
-        console.error(error); // Loga o erro para depuração
-        res.status(500).json({ error: 'Erro ao buscar dados.' });
+        const result = await request.query(query); // Executa a consulta e armazena o resultado.
+
+        res.json(result.recordset); // Retorna os resultados da consulta no formato JSON.
+    } catch (error) { // Captura qualquer erro que ocorrer no bloco 'try'.
+        console.error(error); // Exibe o erro no console para depuração.
+        res.status(500).json({ error: 'Erro ao buscar dados.' }); // Retorna uma resposta de erro ao cliente.
     }
 });
+
 
 
 const PORT = 3000;

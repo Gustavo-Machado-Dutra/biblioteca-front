@@ -40,6 +40,9 @@
     margin-top: -50px;
 }
 
+
+
+/* BARRA LATERAL */
 .barra-lateral img{
     margin-top: 50px;
     margin-bottom: 40px;
@@ -59,13 +62,6 @@
 .barra-lateral a{
     text-decoration: none;
     color: black;
-}
-
-#add{
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    background-color: rgb(255, 255, 255);
 }
 
 .opcao{
@@ -95,6 +91,9 @@ input{
     border: 1px solid rgba(222, 222, 222, 1);
 }
 
+
+
+/* CONTAINER ONDE ESTÁ TODOS OS ELEMENTOS DO FORMULÁRIO */
 .container{
     display: flex;
     align-items: center;
@@ -103,6 +102,9 @@ input{
     height: 1340px;
 }
 
+
+
+/* CONTAINER DO VOLUME, QUANTIDADE E EDIÇÃO */
 .container2{
     display: flex;
     flex-direction: row;
@@ -144,6 +146,9 @@ input{
     width: 300px;
 }
 
+
+
+/* DATA DE PUBLICAÇÃO */
 #data{
     position: relative;
     right: 335px;
@@ -157,6 +162,9 @@ input{
     width: 970px;
 }
 
+
+
+/* PERFIL DO USUARIO */
 .conta{
     display: flex;
     align-items: center;

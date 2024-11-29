@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="alinhar">
+
         <div class="barra-lateral">
             <a href="../biblioteca/biblioteca.html"><img src="../img/senai_logo.png" id="img"></a>
             <a href="../biblioteca/biblioteca.html"><div class="opcao" id="biblioteca">
@@ -18,6 +19,7 @@
                 </div>
                 <p>Biblioteca</p>
             </div></a>
+
             <a href="../add_livro/add_livro.html"><div class="opcao" id="add">
                 <div class="add">
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,44 +163,65 @@
     <script>
     const baseUrl = 'http://localhost:3000/api/livros';
 
+        // Função para buscar e exibir todos os livros
+        function buscarTodosLivros() {
+            fetch(baseUrl) 
+                .then(response => response.json())
+                .then(data => exibirLivros(data))
+                .catch(error => console.error('Erro ao buscar dados:', error));
+        }
+
+        // Função para exibir os livros em uma lista
+        function exibirLivros(data) {
+            const lista = document.getElementById('resultados');
+            lista.innerHTML = '';
+
+            if (data.length === 0) {
+                const noResults = document.createElement('li');
+                noResults.textContent = 'Nenhum livro encontrado.';
+                lista.appendChild(noResults);
+            } else {
+                data.sort((a, b) => a.Titulo.localeCompare(b.Titulo));
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    
+                    const img = document.createElement('img');
+                    img.src = item.imagem || 'default-image.jpg';
+                    img.alt = item.Titulo;
+
+                    const title = document.createElement('span');
+                    title.textContent = item.Titulo;
+
+                    li.appendChild(img);
+                    li.appendChild(title);
+                    lista.appendChild(li);
+                });
+            }
+        }
+
+        // Evento para buscar livros por letra e destacar o botão
         document.getElementById('container3').addEventListener('click', (e) => {
             if (e.target.tagName === 'BUTTON') {
-                const letra = e.target.getAttribute('data-letra'); // Pega a letra do botão clicado
+                const letra = e.target.getAttribute('data-letra');
 
-                // Faz a requisição para o servidor
+                // Remove o destaque de outros botões
+                document.querySelectorAll('#container3 button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+
+                // Adiciona o destaque ao botão clicado
+                e.target.classList.add('active');
+
+                // Busca os livros que começam com a letra
                 fetch(`${baseUrl}?letra=${letra}`)
                     .then(response => response.json())
-                    .then(data => {
-                        const lista = document.getElementById('resultados');
-                        lista.innerHTML = ''; // Limpa os resultados anteriores
-
-                        if (data.length === 0) {
-                            // Exibe uma mensagem caso não encontre livros
-                            const noResults = document.createElement('li');
-                            noResults.textContent = 'Nenhum livro encontrado.';
-                            lista.appendChild(noResults);
-                        } else {
-                            // Adiciona cada livro à lista de resultados
-                            data.forEach(item => {
-                                const li = document.createElement('li');
-
-                                const img = document.createElement('img');
-                                img.src = item.imagem || 'default-image.jpg'; // Usa uma imagem padrão se o URL não for fornecido
-                                img.alt = item.Titulo;
-                                img.style.marginRight = '10px';
-
-                                const title = document.createElement('span');
-                                title.textContent = item.Titulo;
-
-                                li.appendChild(img); // Adiciona a imagem ao elemento
-                                li.appendChild(title); // Adiciona o título ao elemento
-                                lista.appendChild(li); // Adiciona o item à lista
-                            });
-                        }
-                    })
+                    .then(data => exibirLivros(data))
                     .catch(error => console.error('Erro ao buscar dados:', error));
             }
         });
+
+        // Busca inicial de todos os livros ao carregar a página
+        document.addEventListener('DOMContentLoaded', buscarTodosLivros);
     </script>
 </body>
 </html>
