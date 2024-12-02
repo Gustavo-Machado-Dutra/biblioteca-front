@@ -123,24 +123,7 @@ input{
     height: 200px;
 }
 
-#enviar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    border: none;
-    cursor: pointer;
-    width: 170px;
-    height: 50px;
-    border-radius: 8px;
-    font-size: 20px;
-    transition: 300ms;
-    background-color: rgba(204, 64, 57, 1);
-}
 
-#enviar:hover{
-    scale: 1.05;
-}
 
 #edicao, #volume, #quantidade{
     width: 300px;
@@ -162,6 +145,49 @@ input{
     width: 970px;
 }
 
+#enviar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 170px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 18px;
+    transition: 300ms;
+    background-color: rgba(204, 64, 57, 1);
+}
+
+#enviar:hover{
+    scale: 1.05;
+}
+
+#add-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    gap: 12px;
+    width: 200px;
+    height: 50px;
+    transition: 300ms;
+    background-color: rgba(75, 193, 210, 0.31);
+    cursor: pointer;
+}
+
+#add-img img{
+    width: 18px;
+    height: 18px;
+}
+
+#add-img:hover{
+    scale: 1.05;
+}
 
 
 /* PERFIL DO USUARIO */
@@ -197,3 +223,6 @@ input{
     border-radius: 100px;
     background-color: red;
 }
+
+
+

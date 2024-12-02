@@ -163,65 +163,91 @@
     <script>
     const baseUrl = 'http://localhost:3000/api/livros';
 
-        // Função para buscar e exibir todos os livros
-        function buscarTodosLivros() {
-            fetch(baseUrl) 
+    // Função para buscar e exibir todos os livros
+    function buscarTodosLivros() {
+        fetch(baseUrl) 
+            .then(response => response.json())
+            .then(data => exibirLivros(data))
+            .catch(error => console.error('Erro ao buscar dados:', error));
+    }
+
+    // Função para exibir os livros em uma lista
+    function exibirLivros(data) {
+        const lista = document.getElementById('resultados');
+        lista.innerHTML = '';
+
+        if (data.length === 0) {
+            const noResults = document.createElement('li');
+            noResults.textContent = 'Nenhum livro encontrado.'; 
+            lista.appendChild(noResults);
+        } else {
+            data.sort((a, b) => a.Titulo.localeCompare(b.Titulo));
+            data.forEach(item => {
+                const li = document.createElement('li');
+                
+                // Div principal que contém a imagem e o título
+                const livroDiv = document.createElement('div');
+                livroDiv.classList.add('livro-container');
+
+                // Div para a imagem
+                const img = document.createElement('img');
+                img.src = item.imagem || 'default-image.jpg';
+                img.alt = item.Titulo;
+
+                // Div para o título
+                const title = document.createElement('span');
+                title.textContent = item.Titulo;
+
+                // Div para o círculo no canto superior direito
+                const editarDiv = document.createElement('div');
+                editarDiv.classList.add('editar');
+
+                // Criando a imagem dentro da div
+                const imgLapis = document.createElement('div');
+                imgLapis.id = 'lapis';
+
+                // coloca a img do lapis dentro da div de editar
+                editarDiv.appendChild(imgLapis);
+
+                const linkar = document.createElement('a');
+                linkar.href = '#';  // colocar o caminho da linkagem 
+                linkar.appendChild(editarDiv); // colocar a div editar div dentro do href
+
+                // colocando todos os elementos dentro da div do livro
+                livroDiv.appendChild(img);
+                livroDiv.appendChild(title);
+                livroDiv.appendChild(editarDiv);
+
+                li.appendChild(livroDiv);
+                lista.appendChild(li);
+            });
+        }
+    }
+
+    // Evento para buscar livros por letra e destacar o botão
+    document.getElementById('container3').addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            const letra = e.target.getAttribute('data-letra');
+
+            // Remove o destaque de outros botões
+            document.querySelectorAll('#container3 button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Adiciona o destaque ao botão clicado
+            e.target.classList.add('active');
+
+            // Busca os livros que começam com a letra
+            fetch(`${baseUrl}?letra=${letra}`)
                 .then(response => response.json())
                 .then(data => exibirLivros(data))
                 .catch(error => console.error('Erro ao buscar dados:', error));
         }
+    });
 
-        // Função para exibir os livros em uma lista
-        function exibirLivros(data) {
-            const lista = document.getElementById('resultados');
-            lista.innerHTML = '';
+    // Busca inicial de todos os livros ao carregar a página
+    document.addEventListener('DOMContentLoaded', buscarTodosLivros);
 
-            if (data.length === 0) {
-                const noResults = document.createElement('li');
-                noResults.textContent = 'Nenhum livro encontrado.';
-                lista.appendChild(noResults);
-            } else {
-                data.sort((a, b) => a.Titulo.localeCompare(b.Titulo));
-                data.forEach(item => {
-                    const li = document.createElement('li');
-                    
-                    const img = document.createElement('img');
-                    img.src = item.imagem || 'default-image.jpg';
-                    img.alt = item.Titulo;
-
-                    const title = document.createElement('span');
-                    title.textContent = item.Titulo;
-
-                    li.appendChild(img);
-                    li.appendChild(title);
-                    lista.appendChild(li);
-                });
-            }
-        }
-
-        // Evento para buscar livros por letra e destacar o botão
-        document.getElementById('container3').addEventListener('click', (e) => {
-            if (e.target.tagName === 'BUTTON') {
-                const letra = e.target.getAttribute('data-letra');
-
-                // Remove o destaque de outros botões
-                document.querySelectorAll('#container3 button').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-
-                // Adiciona o destaque ao botão clicado
-                e.target.classList.add('active');
-
-                // Busca os livros que começam com a letra
-                fetch(`${baseUrl}?letra=${letra}`)
-                    .then(response => response.json())
-                    .then(data => exibirLivros(data))
-                    .catch(error => console.error('Erro ao buscar dados:', error));
-            }
-        });
-
-        // Busca inicial de todos os livros ao carregar a página
-        document.addEventListener('DOMContentLoaded', buscarTodosLivros);
     </script>
 </body>
 </html>
