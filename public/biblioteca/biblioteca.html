@@ -229,21 +229,31 @@
         if (e.target.tagName === 'BUTTON') {
             const letra = e.target.getAttribute('data-letra');
 
-            // Remove o destaque de outros botões
-            document.querySelectorAll('#container3 button').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            // Verifica se o botão clicado já está ativo
+            if (e.target.classList.contains('active')) {
+                // Remove o destaque do botão ativo
+                e.target.classList.remove('active');
 
-            // Adiciona o destaque ao botão clicado
-            e.target.classList.add('active');
+                // Busca todos os livros novamente
+                buscarTodosLivros();
+            } else {
+                // Remove o destaque de outros botões
+                document.querySelectorAll('#container3 button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
 
-            // Busca os livros que começam com a letra
-            fetch(`${baseUrl}?letra=${letra}`)
-                .then(response => response.json())
-                .then(data => exibirLivros(data))
-                .catch(error => console.error('Erro ao buscar dados:', error));
+                // Adiciona o destaque ao botão clicado
+                e.target.classList.add('active');
+
+                // Busca os livros que começam com a letra
+                fetch(`${baseUrl}?letra=${letra}`)
+                    .then(response => response.json())
+                    .then(data => exibirLivros(data))
+                    .catch(error => console.error('Erro ao buscar dados:', error));
+            }
         }
     });
+
 
     // Busca inicial de todos os livros ao carregar a página
     document.addEventListener('DOMContentLoaded', buscarTodosLivros);
